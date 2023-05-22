@@ -46,7 +46,6 @@ self.addEventListener('fetch', function (event) {
     if (isCached) {
       return isCached;
     } 
-
     const fetched = await fetch(event.request);
     await cache.put(event.request, fetched);
     return fetched;
