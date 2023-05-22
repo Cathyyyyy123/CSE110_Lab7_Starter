@@ -51,9 +51,9 @@ function initializeServiceWorker() {
         const registration = await navigator.serviceWorker.register("/sw.js", {scope: "./",});
         console.log("Registration successful");
       } catch (error) {
-        console.error(`The service worker registration fails with ${error}`);
+        console.error("The service worker registration fails with" + error);
       }
-    }) 
+    });
   }
   // B2. TODO - Listen for the 'load' event on the window object.
   // Steps B3-B6 will be *inside* the event listener's function created in B2
@@ -92,7 +92,7 @@ async function getRecipes() {
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
   /**************************/
-  return new Promise(async function (resolve, reject) {
+  return new Promise(async (resolve, reject) => {
     for (const recipe of RECIPE_URLS) {
       try {
         let recipeURL = await fetch (recipe);
@@ -107,7 +107,7 @@ async function getRecipes() {
         reject(error);
       }
     }
-  })
+  });
   // A4-A11 will all be *inside* the callback function we passed to the Promise
   // we're returning
   /**************************/
